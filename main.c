@@ -50,11 +50,15 @@ int move(int p, int dir){
     //     return 0;
     // }
 
-    if (dir == 'w' && nr != 0) nr--; else {printf("Invaid move\n");return 0;}
-    if (dir == 's' && nr != 8) nr++; else {printf("Invaid move\n");return 0;}
-    if (dir == 'a' && nc != 0) nc--; else {printf("Invaid move\n");return 0;}
-    if (dir == 'd' && nc != 8) nc++; else {printf("Invaid move\n");return 0;}
-
+    if (dir == 'w' && nr != 0) nr--;
+    else if (dir == 's' && nr != 8) nr++;
+    else if (dir == 'a' && nc != 0) nc--;
+    else if (dir == 'd' && nc != 8) nc++;
+    else {
+        printf("Invalid move\n");
+        return 0;
+    }
+    
     Pl[p].row = nr;
     Pl[p].col = nc;
     return 1;
