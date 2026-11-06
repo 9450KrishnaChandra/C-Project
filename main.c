@@ -84,6 +84,7 @@ int main(){
     while(1){
         draw();
         printf("\n");
+        printf("Player %d's turn\n", p + 1);
         printf("Move: w/a/s/d\n");
         printf("Wall: h or v followed by row and column\n");
         printf("Quit: q\n");
@@ -94,7 +95,8 @@ int main(){
             break;
         }
         if(cmd == 'w' || cmd == 'a' || cmd == 's' || cmd == 'd'){
-        //     move(p, cmd);
+            move(p, cmd);
+            p=1-p;
         }
         else if(cmd == 'h' || cmd == 'v'){
             scanf("%d %d", &row, &col);
