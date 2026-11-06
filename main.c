@@ -40,6 +40,12 @@ void print_vwall(int r, int c) {
 //         return 0;
 //     if (dir == 'd' && c == 8)
 //         return 0;
+// Check wall
+//     if (wall(Pl[player].row, Pl[player].col, dir)) {
+//         printf("Wall blocking movement\n");
+//         return 0;
+//     }
+//     return 1;
 // }
 
 int move(int p, int dir){
@@ -58,7 +64,13 @@ int move(int p, int dir){
         printf("Invalid move\n");
         return 0;
     }
-    
+
+    // Check wall
+    // if (wall(Pl[p].row, Pl[p].col, dir)) {
+    //     printf("Can't go through the wall\n");
+    //     return 0;
+    // }
+
     Pl[p].row = nr;
     Pl[p].col = nc;
     return 1;
