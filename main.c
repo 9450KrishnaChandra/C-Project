@@ -31,14 +31,29 @@ void print_vwall(int r, int c) {
         printf(" ");
 }
 
+// int can(int r, int c, char dir){
+//     if (dir == 'w' && r == 0)
+//         return 0;
+//     if (dir == 's' && r == 8)
+//         return 0;
+//     if (dir == 'a' && c == 0)
+//         return 0;
+//     if (dir == 'd' && c == 8)
+//         return 0;
+// }
+
 int move(int p, int dir){
     int nr = Pl[p].row;
     int nc = Pl[p].col;
+    // int ok = can(nr, nc, dir);
+    // if(!ok){
+    //     return 0;
+    // }
 
-    if (dir == 'w') nr--;
-    if (dir == 's') nr++;
-    if (dir == 'a') nc--;
-    if (dir == 'd') nc++;
+    if (dir == 'w' && nr != 0) nr--; else {printf("Invaid move\n");return 0;}
+    if (dir == 's' && nr != 8) nr++; else {printf("Invaid move\n");return 0;}
+    if (dir == 'a' && nc != 0) nc--; else {printf("Invaid move\n");return 0;}
+    if (dir == 'd' && nc != 8) nc++; else {printf("Invaid move\n");return 0;}
 
     Pl[p].row = nr;
     Pl[p].col = nc;
@@ -92,14 +107,16 @@ int main(){
 
         printf("> ");
         scanf(" %c", &cmd);
+        int ok=0;
         if(cmd=='q'){
             break;
         }
         if(cmd == 'w' || cmd == 'a' || cmd == 's' || cmd == 'd'){
-            if (move(p, cmd))
+            ok = move(p, cmd);
+            if (ok){
                 p = 1 - p;
-            else
-                printf("Invalid move!\n");
+            }
+            else printf("Invalid move!\n");
         }
         else if(cmd == 'h' || cmd == 'v'){
             scanf("%d %d", &row, &col);
