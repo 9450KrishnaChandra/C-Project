@@ -31,7 +31,7 @@ void print_vwall(int r, int c) {
         printf(" ");
 }
 
-void move(int p, int dir){
+int move(int p, int dir){
     int nr = Pl[p].row;
     int nc = Pl[p].col;
 
@@ -42,6 +42,7 @@ void move(int p, int dir){
 
     Pl[p].row = nr;
     Pl[p].col = nc;
+    return 1;
 }
 
 void draw(){
@@ -95,12 +96,15 @@ int main(){
             break;
         }
         if(cmd == 'w' || cmd == 'a' || cmd == 's' || cmd == 'd'){
-            move(p, cmd);
-            p=1-p;
+            if (move(p, cmd))
+                p = 1 - p;
+            else
+                printf("Invalid move!\n");
         }
         else if(cmd == 'h' || cmd == 'v'){
             scanf("%d %d", &row, &col);
             // place_wall(p, cmd, row, col);
+            // p=1=p;
         }
     }
 }
