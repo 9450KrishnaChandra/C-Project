@@ -7,7 +7,7 @@ typedef struct {
     int walls;
 } Player;
 
-Player p[2] = {
+Player Pl[2] = {
     {8, 4, 10},
     {0, 4, 10}
 };
@@ -32,8 +32,16 @@ void print_vwall(int r, int c) {
 }
 
 void move(int p, int dir){
-    
+    int nr = Pl[p].row;
+    int nc = Pl[p].col;
 
+    if (dir == 'w') nr--;
+    if (dir == 's') nr++;
+    if (dir == 'a') nc--;
+    if (dir == 'd') nc++;
+
+    Pl[p].row = nr;
+    Pl[p].col = nc;
 }
 
 void draw(){
@@ -44,8 +52,8 @@ void draw(){
     printf("   %d", r+1);
     for (int c=0; c<9; c++){
         char ch = '.';
-        if(r==p[0].row && c==p[0].col) ch='1';
-        if(r==p[1].row && c==p[1].col) ch='2';
+        if(r==Pl[0].row && c==Pl[0].col) ch='1';
+        if(r==Pl[1].row && c==Pl[1].col) ch='2';
         printf(" %c ", ch);
         print_vwall(r,c);
     }
@@ -70,6 +78,7 @@ void draw(){
 }
 
 int main(){
+    int p=0;
     char cmd;
     int row, col;
     while(1){
