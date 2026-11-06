@@ -31,7 +31,10 @@ void print_vwall(int r, int c) {
         printf(" ");
 }
 
+void move(int p, int dir){
+    
 
+}
 
 void draw(){
     system("clear");
