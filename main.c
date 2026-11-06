@@ -31,8 +31,11 @@ void print_vwall(int r, int c) {
         printf(" ");
 }
 
+
+
 void draw(){
     system("clear");
+
     printf("\n     1   2   3   4   5   6   7   8   9 \n");
     for (int r = 0; r < 9; r++){
     printf("   %d", r+1);
@@ -64,5 +67,26 @@ void draw(){
 }
 
 int main(){
-    draw();
+    char cmd;
+    int row, col;
+    while(1){
+        draw();
+        printf("\n");
+        printf("Move: w/a/s/d\n");
+        printf("Wall: h or v followed by row and column\n");
+        printf("Quit: q\n");
+
+        printf("> ");
+        scanf(" %c", &cmd);
+        if(cmd=='q'){
+            break;
+        }
+        if(cmd == 'w' || cmd == 'a' || cmd == 's' || cmd == 'd'){
+        //     move(p, cmd);
+        }
+        else if(cmd == 'h' || cmd == 'v'){
+            scanf("%d %d", &row, &col);
+            // place_wall(p, cmd, row, col);
+        }
+    }
 }
